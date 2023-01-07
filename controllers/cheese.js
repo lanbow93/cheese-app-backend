@@ -37,5 +37,13 @@ router.post("/", async (request, response) => {
     }
 })
 
+// Show route for Cheeses
+router.get("/:id", async (request, response) => {
+    try {
+        response.json(await Cheese.findById(request.params.id))
+    } catch (error) {
+        response.status(400).json(error)
+    }
+})
 
 module.exports = router
